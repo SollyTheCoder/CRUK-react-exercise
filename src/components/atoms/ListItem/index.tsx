@@ -1,25 +1,36 @@
 import { Heading, Text } from "@cruk/cruk-react-components";
-import { DataType } from "../../../types";
+import { ItemsType } from "../../../types";
 import { AudioItem } from "./AudioItem";
 import { ImageItem } from "./ImageItem";
 import { VideoItem } from "./VideoItem";
 
-export function ListItem({ item }: { item: DataType }) {
+export function ListItem({ item }: { item: ItemsType }) {
+  const meta = item.data[0];
+  if (!meta) return null;
+
   return (
-    <div>
+    <div
+      style={{
+        borderTop: "1px solid #ddd",
+        padding: "1rem 0",
+        display: "flex",
+        gap: "1rem",
+        listStyle: "none",
+      }}
+    >
       <MediaPreview item={item} />
       <div style={{ flex: 1 }}>
-        <Heading h3>{item.title}</Heading>
+        <Heading h3>{meta.title}</Heading>
         <Text textSize="s">
-          {item.media_type}
-          {item.date_created && ` · ${item.date_created.slice(0, 10)}`}
-          {item.center && ` · ${item.center}`}
+          {meta.media_type}
+          {meta.date_created && ` · ${meta.date_created.slice(0, 10)}`}
+          {meta.center && ` · ${meta.center}`}
         </Text>
-        {item.description && (
+        {meta.description && (
           <Text>
-            {item.description.length > 200
-              ? `${item.description.slice(0, 200)}…`
-              : item.description}
+            {meta.description.length > 200
+              ? `${meta.description.slice(0, 200)}…`
+              : meta.description}
           </Text>
         )}
       </div>
@@ -27,8 +38,8 @@ export function ListItem({ item }: { item: DataType }) {
   );
 }
 
-function MediaPreview({ item }: { item: DataType }) {
-  switch (item.media_type) {
+function MediaPreview({ item }: { item: ItemsType }) {
+  switch (item.data[0]?.media_type) {
     case "image":
       return <ImageItem item={item} />;
     case "video":

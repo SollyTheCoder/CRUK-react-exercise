@@ -90,7 +90,7 @@ export function List({ values }: { values?: NasaSearchParams }) {
                 gap: "1rem",
               }}
             >
-              <ListItem item={meta} />
+              <ListItem key={item.data[0]?.nasa_id} item={item} />
             </li>
           );
         })}
