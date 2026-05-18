@@ -6,7 +6,8 @@ export const urlNasaSearch = ({
   keywords,
   mediaType,
   yearStart,
-}: NasaSearchParams): string => {
+  page,
+}: NasaSearchParams & { page: number }): string => {
   const paramsObjectWithSnakeCaseKeys = {
     keywords,
     media_type: mediaType,
@@ -16,5 +17,5 @@ export const urlNasaSearch = ({
   const paramsString = new URLSearchParams(
     paramsObjectWithSnakeCaseKeys,
   ).toString();
-  return `${NASA_API_URL}?${paramsString}`;
+  return `${NASA_API_URL}?${paramsString}&page_size=10&page=${page}`;
 };
