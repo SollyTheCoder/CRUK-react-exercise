@@ -53,7 +53,6 @@ export function List({ values }: { values?: NasaSearchParams }) {
       </Box>
     );
   }
-  console.log(data);
 
   const items = data.collection.items;
   const totalHits = data.collection.metadata?.total_hits ?? 0;
