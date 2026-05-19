@@ -9,7 +9,7 @@
 
 - I updated package version due to a few issues with vulnerabilities and deployment restrictions on Vercel. Most notably `next` to version 16 and after an `npm audit` an override to `postcss` to reduce vulnerabilities to 0.
 - I also refactored layout.tsx and removed styled components as per the migration instructions found in [cruk-react-component](https://github.com/CRUKorg/cruk-react-components/tree/3e02035b199ebb2fb28353fa0f7e0689eb068bd6#migration-from-v5-and-v6-to-v7).
-- During the writing of the Playwright tests I experience an issue with the TextField component and the locator.fill() method. For some reason this was causing inconsistent test results, especially when executeing them headlessly. I switched `fill` for the `pressSequentially` method and this remove the issues.
+- During the writing of the Playwright tests I experience an issue with the TextField component and the locator.fill() method. For some reason this was causing inconsistent test results, especially when executing them headlessly. I switched `fill` for the `pressSequentially` method and this remove the issues.
 - In future, I would make the search and page count query parameters so that the page is directly sharable to other people.
 
 ## Tests
