@@ -1,4 +1,4 @@
-# Strava Application
+# CRUK Application
 
 ## How to run the app
 
