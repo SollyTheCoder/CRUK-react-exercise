@@ -52,7 +52,7 @@ export function Form({
     register,
   } = useForm<FormValues>({
     mode: "onBlur",
-    reValidateMode: "onBlur",
+    reValidateMode: "onChange",
     criteriaMode: "firstError",
     shouldFocusError: true,
     defaultValues: initialData,
