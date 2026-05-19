@@ -10,7 +10,7 @@ test.describe("Search results", () => {
     page,
   }) => {
     mockNasaApi(page, 5, "image");
-    await page.getByLabel("Keywords").fill("moon");
+    await page.getByLabel("Keywords").pressSequentially("moon");
     await page.getByLabel("Media type").selectOption("image");
     await page.getByRole("button", { name: "Submit" }).click();
 
@@ -25,7 +25,7 @@ test.describe("Search results", () => {
 
   test("limits results to 10 per page", async ({ page }) => {
     mockNasaApi(page, 10, "image");
-    await page.getByLabel("Keywords").fill("moon");
+    await page.getByLabel("Keywords").pressSequentially("moon");
     await page.getByLabel("Media type").selectOption("image");
     await page.getByRole("button", { name: "Submit" }).click();
 
@@ -39,7 +39,7 @@ test.describe("Search results", () => {
 
   test("each result links to NASA's detail page", async ({ page }) => {
     mockNasaApi(page, 5, "image");
-    await page.getByLabel("Keywords").fill("moon");
+    await page.getByLabel("Keywords").pressSequentially("moon");
     await page.getByLabel("Media type").selectOption("image");
     await page.getByRole("button", { name: "Submit" }).click();
 
@@ -55,7 +55,7 @@ test.describe("Search results", () => {
 
   test("renders video previews for video searches", async ({ page }) => {
     mockNasaApi(page, 5, "video");
-    await page.getByLabel("Keywords").fill("apollo");
+    await page.getByLabel("Keywords").pressSequentially("apollo");
     await page.getByLabel("Media type").selectOption("video");
     await page.getByRole("button", { name: "Submit" }).click();
 
@@ -66,7 +66,7 @@ test.describe("Search results", () => {
 
   test("renders audio previews for audio searches", async ({ page }) => {
     mockNasaApi(page, 5, "audio");
-    await page.getByLabel("Keywords").fill("apollo");
+    await page.getByLabel("Keywords").pressSequentially("apollo");
     await page.getByLabel("Media type").selectOption("audio");
     await page.getByRole("button", { name: "Submit" }).click();
 
